@@ -1,0 +1,28 @@
+[package]
+name = "upnote-cli"
+version = "0.1.0"
+edition = "2024"
+description = "Command-line querying of a local UpNote database with markdown terminal rendering"
+license = "MIT"
+
+[[bin]]
+name = "upnote-cli"
+path = "src/main.rs"
+
+[dependencies]
+anyhow = "1"
+base64 = "0.22"
+chrono = { version = "0.4", default-features = false, features = ["clock"] }
+clap = { version = "4", features = ["derive"] }
+charmed-glamour = { version = "0.2", features = ["syntax-highlighting"] }
+dirs = "7"
+html2md = "0.2"
+image = { version = "0.25", default-features = false, features = ["png", "jpeg", "webp", "gif"] }
+rusqlite = { version = "0.40", features = ["bundled"] }
+serde_json = "1"
+terminal_size = "0.4"
+
+[profile.release]
+lto = true
+codegen-units = 1
+strip = true
